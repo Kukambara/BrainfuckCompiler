@@ -1,8 +1,5 @@
 package ua.nure.arseniuk.dmytro;
 
-/**
- * Hello world!
- */
 public class Application {
     public static void main(String[] args) {
         /**
@@ -16,8 +13,8 @@ public class Application {
                 "    <<[>>>>>[>>>[-]+++++++++<[>-<-]+++++++++>[-[<->-]+[<<<]]<[>+<-]>]<<-]<<-\n" +
                 "]";
 
-        Compiler compiler = new Compiler();
-        Executor executor = new Executor();
+        BrainfuckCompiler compiler = new BrainfuckCompiler();
+        BrainfuckExecutor executor = new BrainfuckExecutor();
         executor.execute(compiler.compile(input));
     }
 }

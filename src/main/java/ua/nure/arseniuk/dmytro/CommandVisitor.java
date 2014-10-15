@@ -3,7 +3,8 @@ package ua.nure.arseniuk.dmytro;
 import ua.nure.arseniuk.dmytro.command.*;
 
 /**
- * Created by dmytro on 10/9/14.
+ * CommandVisitor - visitor pattern.
+ * Overload visit methods for all Brainfuck existing commands except input command - ","
  */
 public interface CommandVisitor {
 

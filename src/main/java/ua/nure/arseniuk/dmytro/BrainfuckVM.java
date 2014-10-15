@@ -1,8 +1,6 @@
 package ua.nure.arseniuk.dmytro;
 
-/**
- * Created by dmytro on 10/2/14.
- */
+
 public class BrainfuckVM {
     private byte[] memory;
     private Integer index;

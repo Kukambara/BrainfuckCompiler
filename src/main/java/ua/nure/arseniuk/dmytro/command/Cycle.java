@@ -5,9 +5,6 @@ import ua.nure.arseniuk.dmytro.CommandVisitor;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Created by dmytro on 10/2/14.
- */
 public class Cycle implements Command {
 
     private List<Command> commands;

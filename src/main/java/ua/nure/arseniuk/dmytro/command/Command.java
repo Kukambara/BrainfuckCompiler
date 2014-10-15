@@ -1,9 +1,10 @@
 package ua.nure.arseniuk.dmytro.command;
 
+
 import ua.nure.arseniuk.dmytro.CommandVisitor;
 
 /**
- * Created by dmytro on 10/2/14.
+ * Element of visitor pattern.
  */
 public interface Command {
 

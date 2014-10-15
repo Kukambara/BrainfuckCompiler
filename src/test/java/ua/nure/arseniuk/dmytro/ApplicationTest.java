@@ -36,8 +36,8 @@ public class ApplicationTest extends TestCase {
                 "++++++.+++.------.--------.------------------" +
                 "---------------------------------------------" +
                 "----.-----------------------.";
-        Compiler compiler = new Compiler();
-        Executor executor = new Executor();
+        BrainfuckCompiler compiler = new BrainfuckCompiler();
+        BrainfuckExecutor executor = new BrainfuckExecutor();
         executor.execute(compiler.compile(input));
         assertEquals(expected, executor.getOutput());
     }
@@ -51,8 +51,8 @@ public class ApplicationTest extends TestCase {
         final String input = "++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++\n" +
                 " .>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.\n" +
                 " ------.--------.>+.>.";
-        Compiler compiler = new Compiler();
-        Executor executor = new Executor();
+        BrainfuckCompiler compiler = new BrainfuckCompiler();
+        BrainfuckExecutor executor = new BrainfuckExecutor();
         executor.execute(compiler.compile(input));
         assertEquals(expected, executor.getOutput());
     }

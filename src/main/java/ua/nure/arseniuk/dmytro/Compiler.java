@@ -1,83 +1,11 @@
 package ua.nure.arseniuk.dmytro;
 
-import ua.nure.arseniuk.dmytro.command.*;
+import ua.nure.arseniuk.dmytro.command.Command;
 
-import java.util.*;
+import java.util.List;
 
-/**
- * Created by dmytro on 10/2/14.
- */
-public class Compiler implements CommandVisitor {
+public interface Compiler {
 
-    private final HashMap<Character, Command> mapCommand;
-    private final List<Command> commands;
-    private final Deque<Cycle> cycleCommands;
+    public List<Command> compile(String input);
 
-    public Compiler() {
-        commands = new LinkedList<Command>();
-        cycleCommands = new ArrayDeque<Cycle>();
-        mapCommand = new HashMap<Character, Command>();
-        mapCommand.put('>', new MoveRight());
-        mapCommand.put('<', new MoveLeft());
-        mapCommand.put('+', new Increment());
-        mapCommand.put('-', new Decrement());
-        mapCommand.put('.', new Print());
-        mapCommand.put('[', new Cycle());
-        mapCommand.put(']', new EndCycle());
-    }
-
-    public List<Command> compile(String input) {
-        Command command;
-        for (char c : input.toCharArray()) {
-            command = mapCommand.get(c);
-            if (command != null) {
-                command = command.newInstance();
-                command.accept(this);
-            }
-        }
-        return commands;
-    }
-
-    private void saveCommand(Command command) {
-        if (!cycleCommands.isEmpty()) {
-            cycleCommands.peek().add(command);
-        } else {
-            commands.add(command);
-        }
-    }
-
-    @Override
-    public void visit(Increment increment) {
-        saveCommand(increment);
-    }
-
-    @Override
-    public void visit(Decrement decrement) {
-        saveCommand(decrement);
-    }
-
-    @Override
-    public void visit(MoveLeft moveLeft) {
-        saveCommand(moveLeft);
-    }
-
-    @Override
-    public void visit(MoveRight moveRight) {
-        saveCommand(moveRight);
-    }
-
-    @Override
-    public void visit(Print print) {
-        saveCommand(print);
-    }
-
-    @Override
-    public void visit(Cycle cycle) {
-        cycleCommands.push(cycle);
-    }
-
-    @Override
-    public void visit(EndCycle endCycle) {
-        saveCommand(cycleCommands.pop());
-    }
 }
