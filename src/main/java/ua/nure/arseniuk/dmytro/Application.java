@@ -5,20 +5,6 @@ package ua.nure.arseniuk.dmytro;
  */
 public class Application {
     public static void main(String[] args) {
-        //Hello World!
-        /*String input = "+++++++++++++++++++++++++++++++++++++++++++++" +
-                "+++++++++++++++++++++++++++.+++++++++++++++++" +
-                "++++++++++++.+++++++..+++.-------------------" +
-                "---------------------------------------------" +
-                "---------------.+++++++++++++++++++++++++++++" +
-                "++++++++++++++++++++++++++.++++++++++++++++++" +
-                "++++++.+++.------.--------.------------------" +
-                "---------------------------------------------" +
-                "----.-----------------------.";*/
-        //Hello World!
-        /*String input = "++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++\n" +
-                " .>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.\n" +
-                " ------.--------.>+.>.";*/
         /**
          * [Outputs square numbers from 0 to 10000.
          * Daniel B Cristofani (cristofdathevanetdotcom)
@@ -30,6 +16,8 @@ public class Application {
                 "    <<[>>>>>[>>>[-]+++++++++<[>-<-]+++++++++>[-[<->-]+[<<<]]<[>+<-]>]<<-]<<-\n" +
                 "]";
 
-        Interpreter.interpret(Compiler.compile(input));
+        Compiler compiler = new Compiler();
+        Executor executor = new Executor();
+        executor.execute(compiler.compile(input));
     }
 }

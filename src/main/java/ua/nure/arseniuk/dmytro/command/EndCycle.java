@@ -3,9 +3,9 @@ package ua.nure.arseniuk.dmytro.command;
 import ua.nure.arseniuk.dmytro.CommandVisitor;
 
 /**
- * Created by dmytro on 10/2/14.
+ * Created by dmytro on 10/15/14.
  */
-public class MoveRight extends OptimizedCommand {
+public class EndCycle implements Command {
 
     @Override
     public void accept(CommandVisitor visitor) {
@@ -13,8 +13,7 @@ public class MoveRight extends OptimizedCommand {
     }
 
     @Override
-    public MoveRight newInstance() {
-        return new MoveRight();
+    public EndCycle newInstance() {
+        return new EndCycle();
     }
-
 }

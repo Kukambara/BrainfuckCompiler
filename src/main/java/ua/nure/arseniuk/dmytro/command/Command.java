@@ -1,10 +1,13 @@
 package ua.nure.arseniuk.dmytro.command;
 
-import ua.nure.arseniuk.dmytro.BrainfuckVM;
+import ua.nure.arseniuk.dmytro.CommandVisitor;
 
 /**
  * Created by dmytro on 10/2/14.
  */
-public abstract class Command {
-    public abstract void execute(BrainfuckVM brainfuckVM);
+public interface Command {
+
+    public void accept(CommandVisitor visitor);
+
+    public Command newInstance();
 }

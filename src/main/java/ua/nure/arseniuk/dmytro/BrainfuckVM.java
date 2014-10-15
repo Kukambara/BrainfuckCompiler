@@ -6,34 +6,16 @@ package ua.nure.arseniuk.dmytro;
 public class BrainfuckVM {
     private byte[] memory;
     private Integer index;
+    private StringBuilder stringBuilder;
 
     public BrainfuckVM(int memorySize) {
         index = 0;
         memory = new byte[memorySize];
+        stringBuilder = new StringBuilder();
     }
 
     public BrainfuckVM() {
         this(30000);
-    }
-
-    public byte[] getMemory() {
-        return memory;
-    }
-
-    public void increaseCurrentCell() {
-        increaseCurrentCell(1);
-    }
-
-    public void decreaseCurrentCell() {
-        decreaseCurrentCell(1);
-    }
-
-    public void increaseIndex() {
-        increaseIndex(1);
-    }
-
-    public void decreaseIndex() {
-        decreaseIndex(1);
     }
 
     public void increaseCurrentCell(int count) {
@@ -54,6 +36,14 @@ public class BrainfuckVM {
 
     public byte getCurrentCell() {
         return memory[index];
+    }
+
+    public void printInBuilder(char input) {
+        stringBuilder.append(input);
+    }
+
+    public String getBuilderStrings() {
+        return stringBuilder.toString().trim();
     }
 
 }

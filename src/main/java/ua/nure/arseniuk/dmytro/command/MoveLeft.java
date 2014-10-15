@@ -1,6 +1,6 @@
 package ua.nure.arseniuk.dmytro.command;
 
-import ua.nure.arseniuk.dmytro.BrainfuckVM;
+import ua.nure.arseniuk.dmytro.CommandVisitor;
 
 /**
  * Created by dmytro on 10/2/14.
@@ -8,8 +8,13 @@ import ua.nure.arseniuk.dmytro.BrainfuckVM;
 public class MoveLeft extends OptimizedCommand {
 
     @Override
-    public void execute(BrainfuckVM brainfuckVM) {
-        brainfuckVM.decreaseIndex(super.count);
+    public void accept(CommandVisitor visitor) {
+        visitor.visit(this);
+    }
+
+    @Override
+    public MoveLeft newInstance() {
+        return new MoveLeft();
     }
 
 }

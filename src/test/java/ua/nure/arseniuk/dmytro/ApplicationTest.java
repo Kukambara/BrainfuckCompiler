@@ -4,35 +4,56 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-/**
- * Unit test for simple App.
- */
-public class ApplicationTest
-    extends TestCase
-{
+public class ApplicationTest extends TestCase {
     /**
      * Create the test case
      *
      * @param testName name of the test case
      */
-    public ApplicationTest(String testName)
-    {
-        super( testName );
+    public ApplicationTest(String testName) {
+        super(testName);
     }
 
     /**
      * @return the suite of tests being tested
      */
-    public static Test suite()
-    {
-        return new TestSuite( ApplicationTest.class );
+    public static Test suite() {
+        return new TestSuite(ApplicationTest.class);
     }
 
     /**
-     * Rigourous Test :-)
+     * Brainfuck compiler test without loops.
      */
-    public void testApp()
-    {
-        assertTrue( true );
+    public void testHelloWorldWithoutLoops() {
+
+        final String expected = "Hello World!";
+        final String input = "+++++++++++++++++++++++++++++++++++++++++++++" +
+                "+++++++++++++++++++++++++++.+++++++++++++++++" +
+                "++++++++++++.+++++++..+++.-------------------" +
+                "---------------------------------------------" +
+                "---------------.+++++++++++++++++++++++++++++" +
+                "++++++++++++++++++++++++++.++++++++++++++++++" +
+                "++++++.+++.------.--------.------------------" +
+                "---------------------------------------------" +
+                "----.-----------------------.";
+        Compiler compiler = new Compiler();
+        Executor executor = new Executor();
+        executor.execute(compiler.compile(input));
+        assertEquals(expected, executor.getOutput());
+    }
+
+    /**
+     * Brainfuck compiler test with loops.
+     */
+    public void testHelloWorldLoops() {
+
+        final String expected = "Hello World!";
+        final String input = "++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++\n" +
+                " .>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.\n" +
+                " ------.--------.>+.>.";
+        Compiler compiler = new Compiler();
+        Executor executor = new Executor();
+        executor.execute(compiler.compile(input));
+        assertEquals(expected, executor.getOutput());
     }
 }

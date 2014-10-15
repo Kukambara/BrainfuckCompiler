@@ -1,7 +1,6 @@
 package ua.nure.arseniuk.dmytro.command;
 
-import ua.nure.arseniuk.dmytro.BrainfuckVM;
-import ua.nure.arseniuk.dmytro.Interpreter;
+import ua.nure.arseniuk.dmytro.CommandVisitor;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -9,7 +8,7 @@ import java.util.List;
 /**
  * Created by dmytro on 10/2/14.
  */
-public class Cycle extends Command {
+public class Cycle implements Command {
 
     private List<Command> commands;
 
@@ -18,13 +17,23 @@ public class Cycle extends Command {
     }
 
     @Override
-    public void execute(BrainfuckVM brainfuckVM) {
-        while (brainfuckVM.getCurrentCell() != 0) {
-            Interpreter.interpret(commands, brainfuckVM);
-        }
+    public void accept(CommandVisitor visitor) {
+        visitor.visit(this);
     }
+
+    @Override
+    public Cycle newInstance() {
+        return new Cycle();
+    }
+
 
     public void add(Command command) {
         commands.add(command);
     }
+
+    public List<Command> getCommands() {
+        return commands;
+    }
+
+
 }
